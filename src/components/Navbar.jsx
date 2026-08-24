@@ -41,7 +41,7 @@ export default function Navbar() {
 
       <nav className="container-px mx-auto max-w-7xl flex items-center justify-between">
         <NavLink to="/" className="flex items-center gap-2.5 group" onClick={() => setOpen(false)}>
-          <span className={`relative rounded-xl transition-all ${!scrolled ? 'bg-foam/90 backdrop-blur-sm p-1.5 shadow-sm' : ''}`}>
+          <span className="relative rounded-xl transition-all">
             <ImageWithFallback
               src={images.logo}
               alt="Haysimo Water"
