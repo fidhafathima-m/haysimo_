@@ -96,24 +96,24 @@ export default function HomeHero() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="relative h-[380px] sm:h-[460px] lg:h-[520px]"
+          className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-none aspect-[4/5] sm:aspect-[4/5] lg:aspect-auto lg:h-[520px]"
         >
           {/* ripple rings behind bottle */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-sky-light/40 animate-ripple" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-sky-light/40 animate-ripple [animation-delay:0.8s]" />
 
-          <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-horizon-100 to-sky-light/30 overflow-hidden shadow-soft">
+          <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-horizon-100 to-sky-light/30 overflow-hidden shadow-soft p-5 sm:p-7">
             <ImageWithFallback
               src={images.heroCover}
               alt="Haysimo Water — refreshing mineral water"
               className="w-full h-full"
-              imgClassName="w-full h-full object-cover"
+              imgClassName="w-full h-full object-contain drop-shadow-xl"
               label="Haysimo Water"
             />
           </div>
 
           <motion.div
-            className="hidden sm:block absolute -bottom-8 -left-10 w-40 h-40 rounded-3xl bg-white shadow-card overflow-hidden border-4 border-foam"
+            className="hidden lg:block absolute -bottom-8 -left-10 w-40 h-40 rounded-3xl bg-white shadow-card overflow-hidden border-4 border-foam"
             animate={{ y: [0, -14, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           >
@@ -127,7 +127,7 @@ export default function HomeHero() {
           </motion.div>
 
           <motion.div
-            className="hidden sm:block absolute -top-6 -right-8 w-36 h-36 rounded-3xl bg-white shadow-card overflow-hidden border-4 border-foam"
+            className="hidden lg:block absolute -top-6 -right-8 w-36 h-36 rounded-3xl bg-white shadow-card overflow-hidden border-4 border-foam"
             animate={{ y: [0, 14, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
           >
@@ -140,20 +140,6 @@ export default function HomeHero() {
             />
           </motion.div>
 
-          <motion.div
-            className="absolute top-1/2 -right-4 sm:-right-10 -translate-y-1/2 flex items-center gap-2 bg-white rounded-2xl shadow-card px-4 py-3"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-          >
-            <span className="grid place-items-center w-9 h-9 rounded-xl bg-gold/15">
-              <Droplets className="w-4.5 h-4.5 text-gold-dark" />
-            </span>
-            <div className="leading-tight">
-              <p className="text-sm font-semibold text-ink">Mineral-Rich</p>
-              <p className="text-[11px] text-ink/50">Certified purity</p>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
