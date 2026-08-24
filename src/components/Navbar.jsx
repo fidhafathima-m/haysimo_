@@ -31,17 +31,22 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-foam/90 backdrop-blur-md shadow-card py-2' : 'bg-transparent py-4'
+        scrolled ? 'bg-foam/90 backdrop-blur-md shadow-card py-2' : 'py-4'
       }`}
     >
+      {/* Scrim so nav text stays readable over any hero image/color, fades out once scrolled */}
+      {!scrolled && (
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-horizon-950/55 via-horizon-950/15 to-transparent h-28" />
+      )}
+
       <nav className="container-px mx-auto max-w-7xl flex items-center justify-between">
         <NavLink to="/" className="flex items-center gap-2.5 group" onClick={() => setOpen(false)}>
-          <span className="relative">
+          <span className={`relative rounded-xl transition-all ${!scrolled ? 'bg-foam/90 backdrop-blur-sm p-1.5 shadow-sm' : ''}`}>
             <ImageWithFallback
               src={images.logo}
               alt="Haysimo Water"
-              className="h-10 w-auto shrink-0"
-              imgClassName="h-10 w-auto object-contain"
+              className="h-8 sm:h-10 w-auto shrink-0"
+              imgClassName="h-8 sm:h-10 w-auto object-contain"
               label="Haysimo"
             />
           </span>
@@ -55,7 +60,13 @@ export default function Navbar() {
               end={l.to === '/'}
               className={({ isActive }) =>
                 `relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${
-                  isActive ? 'text-horizon-700' : 'text-ink/70 hover:text-horizon-600'
+                  scrolled
+                    ? isActive
+                      ? 'text-horizon-700'
+                      : 'text-ink/70 hover:text-horizon-600'
+                    : isActive
+                      ? 'text-foam'
+                      : 'text-foam/80 hover:text-foam'
                 }`
               }
             >
@@ -65,7 +76,11 @@ export default function Navbar() {
                   {isActive && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 -z-10 rounded-full bg-horizon-50 border border-horizon-100"
+                      className={`absolute inset-0 -z-10 rounded-full border ${
+                        scrolled
+                          ? 'bg-horizon-50 border-horizon-100'
+                          : 'bg-foam/15 border-foam/25 backdrop-blur-sm'
+                      }`}
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -86,7 +101,9 @@ export default function Navbar() {
         </div>
 
         <button
-          className="md:hidden p-2 rounded-full text-horizon-700 hover:bg-horizon-50 transition-colors"
+          className={`md:hidden p-2 rounded-full transition-colors ${
+            scrolled ? 'text-horizon-700 hover:bg-horizon-50' : 'text-foam hover:bg-foam/15'
+          }`}
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
