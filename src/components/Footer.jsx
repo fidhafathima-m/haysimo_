@@ -32,11 +32,10 @@ export default function Footer() {
               <ImageWithFallback
                 src={images.logo}
                 alt="Haysimo Water"
-                className="h-9 w-auto brightness-0 invert opacity-90"
+                className="h-9 w-auto opacity-90"
                 imgClassName="h-9 w-auto object-contain"
                 label="Haysimo"
               />
-              <span className="font-display font-semibold text-lg text-foam">Haysimo</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-foam/60 max-w-sm">
               Proudly sourced from the heart of Somalia, Haysimo delivers pure, mineral-rich
