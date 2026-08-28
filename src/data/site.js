@@ -146,3 +146,42 @@ export const stats = [
   { value: '5', label: 'Pack sizes for every need' },
   { value: '1', label: 'Mission — purity for every home' },
 ];
+
+export const certificates = [
+  {
+    id: 'chamber-of-commerce',
+    title: 'Chamber of Commerce',
+    issuer: 'Puntland Chamber of Commerce & Industry',
+    year: '2026',
+    file: `/src/assets/certifications/chember of commerce.pdf`,
+  },
+  {
+    id: 'license',
+    title: 'Industries License',
+    issuer: 'Ministry of Commerce & Industry',
+    year: '2026',
+    file: `/src/assets/certifications/liesence.pdf`,
+  },
+  {
+    id: 'trade-show',
+    title: 'North Eastern Trade Show',
+    issuer: 'North Eastern Trade Show',
+    year: '2026',
+    file: `/src/assets/certifications/1.pdf`,
+  },
+  {
+    id: 'shahaado-sharaf',
+    title: 'Shahaado Sharaf',
+    issuer: 'Wasiirka Wasaaradda Maaliyadda Puntland',
+    year: '2026',
+    file: `/src/assets/certifications/2.pdf`,
+  },
+  {
+    id: 'shahaado-sharaf',
+    title: 'Shahaado Sharaf',
+    issuer: 'Puntland Tourism Expo',
+    year: '2025',
+    file: `/src/assets/certifications/3.pdf`,
+  },
+  
+];
