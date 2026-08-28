@@ -21,14 +21,11 @@ import ImageWithFallback from "../components/ImageWithFallback";
 
 import { images } from "../data/site";
 import aboutVideo from "../assets/about.mp4";
-
 function AboutVideo() {
   const videoRef = useRef(null);
 
   const [playing, setPlaying] = useState(false);
   const [errored, setErrored] = useState(false);
-  const [muted, setMuted] = useState(false);
-  const [volume, setVolume] = useState(1);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
@@ -43,46 +40,11 @@ function AboutVideo() {
     try {
       if (video.paused) {
         await video.play();
-        setPlaying(true);
       } else {
         video.pause();
-        setPlaying(false);
       }
     } catch (error) {
       console.error("Unable to play video:", error);
-    }
-  };
-
-  /* -----------------------------
-     Mute / Unmute
-  ----------------------------- */
-  const toggleMute = () => {
-    const video = videoRef.current;
-
-    if (!video) return;
-
-    video.muted = !video.muted;
-    setMuted(video.muted);
-  };
-
-  /* -----------------------------
-     Volume
-  ----------------------------- */
-  const handleVolumeChange = (event) => {
-    const value = Number(event.target.value);
-    const video = videoRef.current;
-
-    if (!video) return;
-
-    video.volume = value;
-    setVolume(value);
-
-    if (value === 0) {
-      video.muted = true;
-      setMuted(true);
-    } else {
-      video.muted = false;
-      setMuted(false);
     }
   };
 
@@ -120,33 +82,6 @@ function AboutVideo() {
     if (!video) return;
 
     setCurrentTime(video.currentTime);
-  };
-
-  /* -----------------------------
-     Video ended
-  ----------------------------- */
-  const handleVideoEnded = () => {
-    setPlaying(false);
-    setCurrentTime(0);
-
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-    }
-  };
-
-  /* -----------------------------
-     Fullscreen
-  ----------------------------- */
-  const toggleFullscreen = () => {
-    const video = videoRef.current;
-
-    if (!video) return;
-
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-    } else if (video.requestFullscreen) {
-      video.requestFullscreen();
-    }
   };
 
   /* -----------------------------
@@ -190,11 +125,12 @@ function AboutVideo() {
         ref={videoRef}
         className="w-full h-full object-cover"
         playsInline
+        muted
+        loop
         preload="metadata"
         onError={() => setErrored(true)}
         onLoadedMetadata={handleLoadedMetadata}
         onTimeUpdate={handleTimeUpdate}
-        onEnded={handleVideoEnded}
         onPause={() => setPlaying(false)}
         onPlay={() => setPlaying(true)}
       >
@@ -202,7 +138,7 @@ function AboutVideo() {
       </video>
 
       {/* --------------------------------
-          Initial overlay
+          Overlay when paused
       -------------------------------- */}
       {!playing && (
         <div className="absolute inset-0 bg-horizon-950/20 pointer-events-none" />
@@ -238,87 +174,71 @@ function AboutVideo() {
       {/* --------------------------------
           Video Controls
       -------------------------------- */}
-      {playing && (
-        <div className="absolute bottom-0 left-0 right-0 z-30 px-4 pb-4 pt-14 bg-gradient-to-t from-black/85 via-black/40 to-transparent">
+      <div className="absolute bottom-0 left-0 right-0 z-30 px-4 pb-4 pt-14 bg-gradient-to-t from-black/85 via-black/40 to-transparent">
 
-          {/* Progress */}
-          <input
-            type="range"
-            min="0"
-            max={duration || 0}
-            step="0.1"
-            value={currentTime}
-            onChange={handleSeek}
-            aria-label="Video progress"
-            className="w-full h-1.5 mb-3 cursor-pointer accent-horizon-500"
-          />
+        {/* Progress */}
+        <input
+          type="range"
+          min="0"
+          max={duration || 0}
+          step="0.1"
+          value={currentTime}
+          onChange={handleSeek}
+          aria-label="Video progress"
+          className="w-full h-1.5 mb-3 cursor-pointer accent-horizon-500"
+        />
 
-          {/* Controls row */}
-          <div className="flex items-center gap-3 text-white">
+        {/* Controls row */}
+        <div className="flex items-center gap-3 text-white">
 
-            {/* Play / Pause */}
-            <button
-              type="button"
-              onClick={togglePlay}
-              aria-label={playing ? "Pause video" : "Play video"}
-              className="shrink-0 hover:text-sky-light transition-colors"
-            >
-              {playing ? (
-                <Pause className="w-5 h-5 fill-current" />
-              ) : (
-                <Play className="w-5 h-5 fill-current" />
-              )}
-            </button>
+          {/* Play / Pause */}
+          <button
+            type="button"
+            onClick={togglePlay}
+            aria-label={playing ? "Pause video" : "Play video"}
+            className="shrink-0 hover:text-sky-light transition-colors"
+          >
+            {playing ? (
+              <Pause className="w-5 h-5 fill-current" />
+            ) : (
+              <Play className="w-5 h-5 fill-current" />
+            )}
+          </button>
 
-            {/* Mute */}
-            <button
-              type="button"
-              onClick={toggleMute}
-              aria-label={muted ? "Unmute video" : "Mute video"}
-              className="shrink-0 hover:text-sky-light transition-colors"
-            >
-              {muted || volume === 0 ? (
-                <VolumeX className="w-5 h-5" />
-              ) : (
-                <Volume2 className="w-5 h-5" />
-              )}
-            </button>
+          {/* Duration */}
+          <span className="text-xs font-medium tabular-nums whitespace-nowrap">
+            {formatTime(currentTime)} / {formatTime(duration)}
+          </span>
 
-            {/* Volume slider */}
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.05"
-              value={muted ? 0 : volume}
-              onChange={handleVolumeChange}
-              aria-label="Volume"
-              className="w-14 sm:w-20 h-1 cursor-pointer accent-horizon-500"
-            />
+          {/* Spacer */}
+          <div className="flex-1" />
 
-            {/* Duration */}
-            <span className="text-xs font-medium tabular-nums whitespace-nowrap">
-              {formatTime(currentTime)} / {formatTime(duration)}
-            </span>
+          {/* Fullscreen */}
+          <button
+            type="button"
+            onClick={() => {
+              const video = videoRef.current;
 
-            {/* Spacer */}
-            <div className="flex-1" />
+              if (!video) return;
 
-            {/* Fullscreen */}
-            <button
-              type="button"
-              onClick={toggleFullscreen}
-              aria-label="Fullscreen"
-              className="shrink-0 hover:text-sky-light transition-colors"
-            >
-              <Maximize className="w-5 h-5" />
-            </button>
-          </div>
+              if (document.fullscreenElement) {
+                document.exitFullscreen();
+              } else if (video.requestFullscreen) {
+                video.requestFullscreen();
+              }
+            }}
+            aria-label="Fullscreen"
+            className="shrink-0 hover:text-sky-light transition-colors"
+          >
+            <Maximize className="w-5 h-5" />
+          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 }
+
+
 
 export default function About() {
   return (
