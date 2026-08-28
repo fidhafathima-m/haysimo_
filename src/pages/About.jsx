@@ -13,6 +13,7 @@ import {
 
 import PageHero from "../components/PageHero";
 import ProcessSteps from "../components/ProcessSteps";
+import Certifications from '../components/Certifications';
 import Features from "../components/Features";
 import CtaBanner from "../components/CtaBanner";
 import Reveal from "../components/Reveal";
@@ -412,6 +413,8 @@ export default function About() {
           <ProcessSteps />
         </div>
       </section>
+
+       <Certifications />
 
       {/* Features */}
       <Features
