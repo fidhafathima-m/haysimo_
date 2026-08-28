@@ -6,6 +6,23 @@
 const BASE = 'https://haysimowater.com/wp-content/uploads';
 import aboutHero from "../assets/aboutHero.jpg"
 import presentation from "../assets/homeImg.jpg"
+import logo from "../assets/logo.webp"
+import logoLarge from "../assets/logoLarge.webp"
+import bottleTransparent from "../assets/bottleTransparent.webp"
+import heroCover from "../assets/heroCover.webp"
+import heroImg1 from "../assets/heroImg1.webp"
+import heroImg2 from "../assets/heroImg2.webp"
+import heroImg3 from "../assets/heroImg3.webp"
+import bannerMain from "../assets/bannerMain.webp"
+import bannerProducts from "../assets/bannerProducts.webp"
+import processInfographic from "../assets/processInfographic.webp"
+import bestSeller from "../assets/bestSeller.webp"
+import homeVideoPoster from "../assets/homeVideoPoster.webp"
+import productCombo from "../assets/productCombo.webp"
+import product500 from "../assets/product500.webp"
+import product1500 from "../assets/product1500.webp"
+import product250 from "../assets/product250.webp"
+
 import chamberOfCommerce from '../assets/certifications/chember of commerce.pdf';
 import license from '../assets/certifications/liesence.pdf';
 import tradeShow from '../assets/certifications/1.pdf';
@@ -14,34 +31,32 @@ import shahaadoSharaf2 from '../assets/certifications/3.pdf';
 
 
 export const images = {
-  logo: `${BASE}/2025/04/cropped-WhatsApp_Image_2025-04-02_at_12.04.42_PM-removebg-preview-138x56.png`,
-  logoLarge: `${BASE}/2025/04/cropped-WhatsApp_Image_2025-04-02_at_12.04.42_PM-removebg-preview-1-270x270.png`,
-  bottleTransparent: `${BASE}/2025/04/WhatsApp_Image_2025-04-02_at_12.04.42_PM-removebg-preview.png`,
+  logo,
+  logoLarge,
+  bottleTransparent,
 
-  heroCover: `${BASE}/2025/04/Cover-2.png`,
-  heroImg1: `${BASE}/2026/05/img_1.png`,
-  heroImg2: `${BASE}/2026/05/img_2.png`,
-  heroImg3: `${BASE}/2026/05/img_3.png`,
+  heroCover,
+  heroImg1,
+  heroImg2,
+  heroImg3,
 
-  bannerMain: `${BASE}/2025/04/Haysimo-banner-06.png`,
-  bannerProducts: `${BASE}/2025/04/Haysimo-banner-06-1.png`,
+  bannerMain,
+  bannerProducts,
 
   processMain: {aboutHero},
-  processInfographic: `${BASE}/2025/04/Orange-and-Purple-Simple-Icon-Succeed-Career-Step-Infographic-410x1024.png`,
+  processInfographic,
   presentation,
-  bestSeller: `${BASE}/2025/04/Best-Seller-1024x576.png`,
-
-  aboutVideo: `${BASE}/2025/04/WhatsApp-Video-2025-04-12-at-3.45.20-PM.mp4`,
+  bestSeller,
 
   // Placeholder hero banner video — swap this for a Haysimo-branded clip.
   // (Reliable, freely hotlinkable Google-hosted sample used only as a stand-in.)
   homeVideo: 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-  homeVideoPoster: `${BASE}/2025/04/Cover-2.png`,
+  homeVideoPoster,
 
-  productCombo: `${BASE}/2025/04/backgound-3.png`,
-  product500: `${BASE}/2025/04/backgound-1.png`,
-  product1500: `${BASE}/2025/04/backgound-.png`,
-  product250: `${BASE}/2025/04/backgound-2.png`,
+  productCombo,
+  product500,
+  product1500,
+  product250,
 };
 
 export const products = [
