@@ -5,6 +5,7 @@
 
 const BASE = 'https://haysimowater.com/wp-content/uploads';
 import aboutHero from "../assets/aboutHero.jpg"
+import presentation from "../assets/homeImg.jpg"
 import chamberOfCommerce from '../assets/certifications/chember of commerce.pdf';
 import license from '../assets/certifications/liesence.pdf';
 import tradeShow from '../assets/certifications/1.pdf';
@@ -27,7 +28,7 @@ export const images = {
 
   processMain: {aboutHero},
   processInfographic: `${BASE}/2025/04/Orange-and-Purple-Simple-Icon-Succeed-Career-Step-Infographic-410x1024.png`,
-  presentation: `${BASE}/2025/04/Presentation.png`,
+  presentation,
   bestSeller: `${BASE}/2025/04/Best-Seller-1024x576.png`,
 
   aboutVideo: `${BASE}/2025/04/WhatsApp-Video-2025-04-12-at-3.45.20-PM.mp4`,
