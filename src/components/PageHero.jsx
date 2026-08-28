@@ -6,7 +6,7 @@ export default function PageHero({ eyebrow, title, subtitle, breadcrumb }) {
   return (
     <section className="relative pt-36 pb-20 sm:pt-44 sm:pb-28 overflow-hidden bg-horizon-900">
       <ImageWithFallback
-        src={images.bannerMain}
+        src={images.aboutHero}
         alt=""
         className="absolute inset-0 w-full h-full opacity-25"
         imgClassName="w-full h-full object-cover"
