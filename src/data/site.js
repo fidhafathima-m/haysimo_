@@ -5,6 +5,12 @@
 
 const BASE = 'https://haysimowater.com/wp-content/uploads';
 import aboutHero from "../assets/aboutHero.jpg"
+import chamberOfCommerce from '../assets/certifications/chember of commerce.pdf';
+import license from '../assets/certifications/liesence.pdf';
+import tradeShow from '../assets/certifications/1.pdf';
+import shahaadoSharaf1 from '../assets/certifications/2.pdf';
+import shahaadoSharaf2 from '../assets/certifications/3.pdf';
+
 
 export const images = {
   logo: `${BASE}/2025/04/cropped-WhatsApp_Image_2025-04-02_at_12.04.42_PM-removebg-preview-138x56.png`,
@@ -153,35 +159,34 @@ export const certificates = [
     title: 'Chamber of Commerce',
     issuer: 'Puntland Chamber of Commerce & Industry',
     year: '2026',
-    file: `/src/assets/certifications/chember of commerce.pdf`,
+    file: chamberOfCommerce,
   },
   {
     id: 'license',
     title: 'Industries License',
     issuer: 'Ministry of Commerce & Industry',
     year: '2026',
-    file: `/src/assets/certifications/liesence.pdf`,
+    file: license,
   },
   {
     id: 'trade-show',
     title: 'North Eastern Trade Show',
     issuer: 'North Eastern Trade Show',
     year: '2026',
-    file: `/src/assets/certifications/1.pdf`,
+    file: tradeShow,
   },
   {
-    id: 'shahaado-sharaf',
+    id: 'shahaado-sharaf-1',
     title: 'Shahaado Sharaf',
     issuer: 'Wasiirka Wasaaradda Maaliyadda Puntland',
     year: '2026',
-    file: `/src/assets/certifications/2.pdf`,
+    file: shahaadoSharaf1,
   },
   {
-    id: 'shahaado-sharaf',
+    id: 'shahaado-sharaf-2',
     title: 'Shahaado Sharaf',
     issuer: 'Puntland Tourism Expo',
     year: '2025',
-    file: `/src/assets/certifications/3.pdf`,
+    file: shahaadoSharaf2,
   },
-  
 ];
