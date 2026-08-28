@@ -4,6 +4,7 @@
 // <ImageWithFallback> component swaps in a themed placeholder automatically.
 
 const BASE = 'https://haysimowater.com/wp-content/uploads';
+import aboutHero from "../assets/aboutHero.jpg"
 
 export const images = {
   logo: `${BASE}/2025/04/cropped-WhatsApp_Image_2025-04-02_at_12.04.42_PM-removebg-preview-138x56.png`,
@@ -18,12 +19,17 @@ export const images = {
   bannerMain: `${BASE}/2025/04/Haysimo-banner-06.png`,
   bannerProducts: `${BASE}/2025/04/Haysimo-banner-06-1.png`,
 
-  processMain: `${BASE}/2025/04/Haysimo.png`,
+  processMain: {aboutHero},
   processInfographic: `${BASE}/2025/04/Orange-and-Purple-Simple-Icon-Succeed-Career-Step-Infographic-410x1024.png`,
   presentation: `${BASE}/2025/04/Presentation.png`,
   bestSeller: `${BASE}/2025/04/Best-Seller-1024x576.png`,
 
   aboutVideo: `${BASE}/2025/04/WhatsApp-Video-2025-04-12-at-3.45.20-PM.mp4`,
+
+  // Placeholder hero banner video — swap this for a Haysimo-branded clip.
+  // (Reliable, freely hotlinkable Google-hosted sample used only as a stand-in.)
+  homeVideo: 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+  homeVideoPoster: `${BASE}/2025/04/Cover-2.png`,
 
   productCombo: `${BASE}/2025/04/backgound-3.png`,
   product500: `${BASE}/2025/04/backgound-1.png`,
@@ -32,15 +38,6 @@ export const images = {
 };
 
 export const products = [
-  {
-    id: 'haysimo-btc-combo-pack',
-    name: 'HAYSIMO BTC',
-    variant: 'Combo Pack',
-    description:
-      'A mixed-size case built for households — the full Haysimo range in one convenient carton.',
-    image: images.productCombo,
-    tag: 'Most Popular',
-  },
   {
     id: 'haysimo-bt1-500ml',
     name: 'HAYSIMO',
@@ -51,16 +48,34 @@ export const products = [
     tag: 'Everyday',
   },
   {
+    id: 'haysimo-bt1-500ml-24',
+    name: 'HAYSIMO',
+    variant: '24 × 500ml',
+    description:
+      'A larger everyday pack for homes, offices, and businesses that need dependable hydration on hand.',
+    image: images.product500,
+    tag: 'Value Pack',
+  },
+  {
     id: 'haysimo-bt3-1500ltr',
     name: 'HAYSIMO',
-    variant: '6 × 1.5ltr',
+    variant: '6 × 1.5L',
     description:
       'Family-sized bottles for the home and dinner table — pure hydration that goes further.',
     image: images.product1500,
     tag: 'Family Size',
   },
   {
-    id: 'haysimo-bt2-250ltr',
+    id: 'haysimo-bt3-1500ltr-12',
+    name: 'HAYSIMO',
+    variant: '12 × 1.5L',
+    description:
+      'A generous family pack designed for homes, gatherings, and everyday hydration.',
+    image: images.product1500,
+    tag: 'Large Pack',
+  },
+  {
+    id: 'haysimo-bt2-250ml',
     name: 'HAYSIMO',
     variant: '24 × 250ml',
     description:
@@ -128,6 +143,6 @@ export const contact = {
 export const stats = [
   { value: '35+', label: 'Years of combined industry experience' },
   { value: '100%', label: 'Somali sourced & bottled' },
-  { value: '4', label: 'Pack sizes for every need' },
+  { value: '5', label: 'Pack sizes for every need' },
   { value: '1', label: 'Mission — purity for every home' },
 ];
