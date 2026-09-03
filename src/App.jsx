@@ -10,7 +10,6 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
 import Contact from './pages/Contact';
-import VideoLoader from './components/VideoLoader'; // Import the new component
 
 function PageTransition({ children }) {
   return (
@@ -28,39 +27,19 @@ function PageTransition({ children }) {
 export default function App() {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
-  const [showVideoLoader, setShowVideoLoader] = useState(true);
 
   useEffect(() => {
-    // Show video loader on initial load or when navigating to home
-    if (location.pathname === '/') {
-      setShowVideoLoader(true);
-      setLoading(true);
-    } else {
-      setShowVideoLoader(false);
-      setLoading(false);
-    }
-  }, [location.pathname]);
+    const timer = setTimeout(() => setLoading(false), 1800);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = loading ? 'hidden' : '';
   }, [loading]);
 
-  // Handle when video ends
-  const handleVideoEnd = () => {
-    setShowVideoLoader(false);
-    setLoading(false);
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Video Loader */}
-      {showVideoLoader && (
-        <VideoLoader onVideoEnd={handleVideoEnd} />
-      )}
-      
-      {/* Traditional Loader (fallback if needed) */}
-      {!showVideoLoader && <Loader show={loading} />}
-      
+      <Loader show={loading} />
       <ScrollProgress />
       <ScrollToTop />
       <Navbar />
